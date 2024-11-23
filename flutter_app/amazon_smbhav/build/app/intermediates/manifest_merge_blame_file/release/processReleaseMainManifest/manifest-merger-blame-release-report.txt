@@ -1,0 +1,239 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.untitled"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:2:5-67
+11-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:2:22-64
+12    <!--
+13         Required to query activities that can process text, see:
+14         https://developer.android.com/training/package-visibility and
+15         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+16
+17         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+18    -->
+19    <queries>
+19-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:46:5-51:15
+20        <intent>
+20-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:47:9-50:18
+21            <action android:name="android.intent.action.PROCESS_TEXT" />
+21-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:48:13-72
+21-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:48:21-70
+22
+23            <data android:mimeType="text/plain" />
+23-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:49:13-50
+23-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:49:19-48
+24        </intent>
+25        <!-- Needs to be explicitly declared on Android R+ -->
+26        <package android:name="com.google.android.apps.maps" />
+26-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
+26-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
+27    </queries>
+28    <!-- Include required permissions for Google Maps API to run. -->
+29    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+29-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:23:5-79
+29-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:23:22-76
+30
+31    <uses-feature
+31-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
+32        android:glEsVersion="0x00020000"
+32-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
+33        android:required="true" />
+33-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
+34
+35    <permission
+35-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+36        android:name="com.example.untitled.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+36-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+37        android:protectionLevel="signature" />
+37-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+38
+39    <uses-permission android:name="com.example.untitled.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+39-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+39-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+40
+41    <application
+42        android:name="android.app.Application"
+42-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:8:9-42
+43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+43-->[androidx.core:core:1.13.1] /Users/nativewit/.gradle/caches/transforms-3/52e18c112b3c464ebfad2622182d3ae8/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+44        android:extractNativeLibs="true"
+45        android:icon="@mipmap/ic_launcher"
+45-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:9:9-43
+46        android:label="Vaanik"
+46-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:5:9-31
+47        android:usesCleartextTraffic="true" >
+47-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:6:9-44
+48        <meta-data
+48-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:10:9-11:70
+49            android:name="com.google.android.geo.API_KEY"
+49-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:10:20-65
+50            android:value="AIzaSyCUA-lSWMmONeNlsHKB7kTXYnZqfKNIeS0" />
+50-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:11:13-68
+51
+52        <activity
+52-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:12:9-34:20
+53            android:name="com.example.untitled.MainActivity"
+53-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:13:13-41
+54            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+54-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:18:13-163
+55            android:exported="true"
+55-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:14:13-36
+56            android:hardwareAccelerated="true"
+56-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:19:13-47
+57            android:launchMode="singleTop"
+57-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:15:13-43
+58            android:taskAffinity=""
+58-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:16:13-36
+59            android:theme="@style/LaunchTheme"
+59-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:17:13-47
+60            android:windowSoftInputMode="adjustResize" >
+60-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:20:13-55
+61
+62            <!--
+63                 Specifies an Android theme to apply to this Activity as soon as
+64                 the Android process has started. This theme is visible to the user
+65                 while the Flutter UI initializes. After that, this theme continues
+66                 to determine the Window background behind the Flutter UI.
+67            -->
+68            <meta-data
+68-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:25:13-28:17
+69                android:name="io.flutter.embedding.android.NormalTheme"
+69-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:26:15-70
+70                android:resource="@style/NormalTheme" />
+70-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:27:15-52
+71
+72            <intent-filter>
+72-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:30:13-33:29
+73                <action android:name="android.intent.action.MAIN" />
+73-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:31:17-68
+73-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:31:25-66
+74
+75                <category android:name="android.intent.category.LAUNCHER" />
+75-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:32:17-76
+75-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:32:27-74
+76            </intent-filter>
+77        </activity>
+78        <!--
+79             Don't delete the meta-data below.
+80             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+81        -->
+82        <meta-data
+82-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:37:9-39:33
+83            android:name="flutterEmbedding"
+83-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:38:13-44
+84            android:value="2" />
+84-->/Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/android/app/src/main/AndroidManifest.xml:39:13-30
+85
+86        <activity
+86-->[:url_launcher_android] /Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-11:74
+87            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+87-->[:url_launcher_android] /Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:13-74
+88            android:exported="false"
+88-->[:url_launcher_android] /Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:13-37
+89            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+89-->[:url_launcher_android] /Users/nativewit/StudioProjects/amazon-sambhav/flutter_app/amazon_smbhav/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:13-71
+90
+91        <uses-library
+91-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+92            android:name="androidx.window.extensions"
+92-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+93            android:required="false" />
+93-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+94        <uses-library
+94-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+95            android:name="androidx.window.sidecar"
+95-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+96            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
+96-->[androidx.window:window:1.2.0] /Users/nativewit/.gradle/caches/transforms-3/32e05b2f2f5bc4b18c72b8f35e0189d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+97        <uses-library
+97-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+98            android:name="org.apache.http.legacy"
+98-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+99            android:required="false" />
+99-->[com.google.android.gms:play-services-maps:18.2.0] /Users/nativewit/.gradle/caches/transforms-3/fa5a7f2e26fdefd03fb07bb2829644e1/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
+100
+101        <activity
+101-->[com.google.android.gms:play-services-base:18.0.1] /Users/nativewit/.gradle/caches/transforms-3/f0593124dd3a522068152ab7f2211677/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+102            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+102-->[com.google.android.gms:play-services-base:18.0.1] /Users/nativewit/.gradle/caches/transforms-3/f0593124dd3a522068152ab7f2211677/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+103            android:exported="false"
+103-->[com.google.android.gms:play-services-base:18.0.1] /Users/nativewit/.gradle/caches/transforms-3/f0593124dd3a522068152ab7f2211677/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+104            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+104-->[com.google.android.gms:play-services-base:18.0.1] /Users/nativewit/.gradle/caches/transforms-3/f0593124dd3a522068152ab7f2211677/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+105
+106        <meta-data
+106-->[com.google.android.gms:play-services-basement:18.0.0] /Users/nativewit/.gradle/caches/transforms-3/9e16b91d9b40dbb8f6cb1e5d98ceb744/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+107            android:name="com.google.android.gms.version"
+107-->[com.google.android.gms:play-services-basement:18.0.0] /Users/nativewit/.gradle/caches/transforms-3/9e16b91d9b40dbb8f6cb1e5d98ceb744/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+108            android:value="@integer/google_play_services_version" />
+108-->[com.google.android.gms:play-services-basement:18.0.0] /Users/nativewit/.gradle/caches/transforms-3/9e16b91d9b40dbb8f6cb1e5d98ceb744/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+109
+110        <provider
+110-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+111            android:name="androidx.startup.InitializationProvider"
+111-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
+112            android:authorities="com.example.untitled.androidx-startup"
+112-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
+113            android:exported="false" >
+113-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37
+114            <meta-data
+114-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+115                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+115-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+116                android:value="androidx.startup" />
+116-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nativewit/.gradle/caches/transforms-3/f3276b02d8a2d4072bcf8aeaa7cb1f1d/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+117            <meta-data
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+118                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+119                android:value="androidx.startup" />
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+120        </provider>
+121
+122        <receiver
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+123            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+124            android:directBootAware="false"
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+125            android:enabled="true"
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+126            android:exported="true"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+127            android:permission="android.permission.DUMP" >
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+128            <intent-filter>
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+129                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+130            </intent-filter>
+131            <intent-filter>
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+132                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+133            </intent-filter>
+134            <intent-filter>
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+135                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+136            </intent-filter>
+137            <intent-filter>
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+138                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/nativewit/.gradle/caches/transforms-3/e3898096c8912b5e8859d9d38def915a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+139            </intent-filter>
+140        </receiver>
+141    </application>
+142
+143</manifest>

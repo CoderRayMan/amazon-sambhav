@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 
 final List<Map<String, dynamic>> pastaddresses = [
   {
-    'name': 'Rohit Sharma',
+    'name': '1289',
     'address': '123 MG Road, Apt. 4B, Mumbai, Maharashtra 400001',
     'delivered': true,
     'product': 'Mobile Phone',
@@ -11,7 +11,7 @@ final List<Map<String, dynamic>> pastaddresses = [
     'reward':800
   },
   {
-    'name': 'Rajesh Kumar',
+    'name': '8936',
     'address': '78 Anna Salai, Chennai, Tamil Nadu 600002',
     'delivered': false,
     'product': 'Headphones',
@@ -21,7 +21,7 @@ final List<Map<String, dynamic>> pastaddresses = [
 
   },
   {
-    'name': 'Priya Singh',
+    'name': '9828',
     'address': '56 Ashok Nagar, Noida, Uttar Pradesh 201301',
     'delivered': true,
     'product': 'Laptop',
@@ -32,7 +32,7 @@ final List<Map<String, dynamic>> pastaddresses = [
 
   },
   {
-    'name': 'Amit Patel',
+    'name': '2739',
     'address': '12 Gandhi Street, Ahmedabad, Gujarat 380001',
     'delivered': true,
     'product': 'Tablet',
@@ -42,7 +42,7 @@ final List<Map<String, dynamic>> pastaddresses = [
 
   },
   {
-    'name': 'Sunita Rao',
+    'name': '0340',
     'address': '45 Brigade Road, Bangalore, Karnataka 560025',
     'delivered': false,
     'product': 'Smartwatch',
@@ -53,7 +53,7 @@ final List<Map<String, dynamic>> pastaddresses = [
   },
 
   {
-    'name': 'Neha Verma',
+    'name': '1269',
     'address': '98 Malabar Hill, Mumbai, Maharashtra 400006',
     'delivered': true,
     'product': 'TV',
@@ -63,7 +63,7 @@ final List<Map<String, dynamic>> pastaddresses = [
 
   },
   {
-    'name': 'Vikram Gupta',
+    'name': '2398',
     'address': '23 Lajpat Nagar, Delhi, 110024',
     'delivered': true,
     'product': 'Refrigerator',

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:untitled/screens/home/home_page.dart';
 import 'package:untitled/screens/home/homepage.dart';
+import 'package:untitled/screens/manager/assignments.dart';
+import 'package:untitled/screens/manager/dashboard.dart';
 import 'package:untitled/screens/packaging/packaging%20dashboard.dart';
+import 'package:untitled/utils/colors.dart';
 
 void main() => runApp(MyApp());
 List<dynamic>? cachedData; // Cache for delivery data
@@ -14,10 +16,45 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vaanik - Amazon Sambhav Hackathon',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Roboto', // Add a professional font if available
-      ),
+      // theme: ThemeData(
+      //   brightness: Brightness.light,
+      //   primaryColor: AppColors.primaryColor,
+      //   hintColor: AppColors.accentColor,
+      //   scaffoldBackgroundColor: AppColors.backgroundColor,
+      //   appBarTheme: AppBarTheme(
+      //     color: AppColors.primaryColor,
+      //     iconTheme: IconThemeData(color: AppColors.textColor),
+      //     titleTextStyle: TextStyle(
+      //       color: AppColors.textColor,
+      //       fontSize: 20.0,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      //   textTheme: TextTheme(
+      //     bodyLarge: TextStyle(color: AppColors.textColor),
+      //     bodyMedium: TextStyle(color: AppColors.textColor),
+      //     titleMedium: TextStyle(color: AppColors.hintTextColor),
+      //     titleLarge: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold),
+      //   ),
+      //   buttonTheme: ButtonThemeData(
+      //     buttonColor: AppColors.secondaryColor,
+      //     textTheme: ButtonTextTheme.primary,
+      //   ),
+      //   inputDecorationTheme: InputDecorationTheme(
+      //     filled: true,
+      //     fillColor: Colors.white,
+      //     enabledBorder: OutlineInputBorder(
+      //       borderSide: BorderSide(color: AppColors.secondaryColor),
+      //       borderRadius: BorderRadius.circular(8.0),
+      //     ),
+      //     focusedBorder: OutlineInputBorder(
+      //       borderSide: BorderSide(color: AppColors.tertiaryColor),
+      //       borderRadius: BorderRadius.circular(8.0),
+      //     ),
+      //     hintStyle: TextStyle(color: AppColors.hintTextColor),
+      //   ),
+      //   fontFamily: 'Roboto'
+      // ),
       home: InitialPage(),
     );
   }
@@ -26,21 +63,26 @@ class MyApp extends StatelessWidget {
 class InitialPage extends StatelessWidget {
   final List<Role> roles = [
     Role(
-      title: 'Delivery Login',
+      title: 'Movers',
       icon: Icons.delivery_dining,
       navigateTo: DeliveryPage(),
     ),
     Role(
-      title: 'Stock Loading Login',
+      title: 'Packers',
       icon: Icons.warehouse,
       navigateTo: PackagingDashboard(),
+    ),
+    Role(
+      title: 'Managers',
+      icon: Icons.manage_accounts,
+      navigateTo: AssignmentsScreen(),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +91,7 @@ class InitialPage extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(vertical: 20),
               decoration: BoxDecoration(
-                color: Colors.blue[800],
+                color: Colors.teal,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(25),
                   bottomRight: Radius.circular(25),
@@ -57,7 +99,7 @@ class InitialPage extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Vaanik',
+                  'Vàanik',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 28,
@@ -74,7 +116,7 @@ class InitialPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.blueGrey[800],
+                color: Colors.grey[800],
               ),
             ),
             SizedBox(height: 20),
@@ -82,10 +124,10 @@ class InitialPage extends StatelessWidget {
             // Grid view for role selection
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 36),
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 1,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                     childAspectRatio: 1.1,
@@ -100,11 +142,13 @@ class InitialPage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => role.navigateTo),
                         );
                       },
-                      child: Card(
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                      child: Container(
+
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.teal[50]
                         ),
+
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

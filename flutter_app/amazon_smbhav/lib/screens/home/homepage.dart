@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:untitled/main.dart';
 import 'package:untitled/screens/home/drawer.dart';
 import 'dart:convert';
-
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../main.dart';
 
 class DeliveryPage extends StatefulWidget {
   @override
   _DeliveryPageState createState() => _DeliveryPageState();
 }
 
-
 class _DeliveryPageState extends State<DeliveryPage> {
   late Future<List<dynamic>> deliveryData;
   String filterValue = 'All';
   String searchQuery = '';
   GoogleMapController? mapController;
+  Polyline? routePolyline;
 
   @override
   void initState() {
@@ -28,8 +28,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
   Future<List<dynamic>> fetchOrGetCachedData({bool forceRefresh = false}) async {
     // Refresh data if forceRefresh is true
     if (forceRefresh || cachedData == null) {
-      final url = Uri.parse(
-          "https://a6k5eg0vc0.execute-api.us-east-1.amazonaws.com/s1/route-ops?emp_id=D1001");
+      final url = Uri.parse("https://a6k5eg0vc0.execute-api.us-east-1.amazonaws.com/s1/route-ops?emp_id=D1001");
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
@@ -50,21 +49,41 @@ class _DeliveryPageState extends State<DeliveryPage> {
     if (cachedData == null) return;
 
     Set<Marker> newMarkers = {};
+    List<LatLng> routePoints = [];
 
-    for (var delivery in cachedData!) {
+    for (int i = 0; i < cachedData!.length; i++) {
+      var delivery = cachedData![i];
       final latitude = delivery['lat'];
       final longitude = delivery['lng'];
+
       newMarkers.add(
         Marker(
           markerId: MarkerId(delivery['load_id'].toString()),
           position: LatLng(double.parse(latitude), double.parse(longitude)),
           infoWindow: InfoWindow(
-            title: delivery['address'],
-            snippet: 'Sequence: ${delivery['sequence']}',
+            title: 'Delivery: $i\n${delivery['address']}',
+            snippet: 'Del.No.: ${delivery['sequence']}',
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
         ),
       );
+
+      // Add points to the route list from index 1 to the last item
+      if (i > 0) {
+        routePoints.add(LatLng(double.parse(latitude), double.parse(longitude)));
+      }
+    }
+
+    // Draw route (polyline) from index 1 to the last marker
+    if (routePoints.isNotEmpty) {
+      setState(() {
+        routePolyline = Polyline(
+          polylineId: PolylineId('route'),
+          points: routePoints,
+          color: Colors.blue,
+          width: 5,
+        );
+      });
     }
 
     setState(() {
@@ -101,111 +120,32 @@ class _DeliveryPageState extends State<DeliveryPage> {
     final Uri telUrl = Uri(scheme: 'tel', path: phoneNumber);
     await launchUrl(telUrl);
   }
-  void _showCancelDialog(int index) {
-    TextEditingController cancelReasonController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Cancel Order'),
-          content: TextField(
-            controller: cancelReasonController,
-            decoration: InputDecoration(
-              labelText: 'Enter reason for cancellation',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-
-                Navigator.of(context).pop();
-              },
-              child: Text('Submit'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-  void _showDeliveryDialog(dynamic delivery) {
-    TextEditingController otpController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Confirm Delivery'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                  'Delivery Address: ${delivery['address']}\nProduct ID: ${delivery['load_id']}'),
-              SizedBox(height: 10),
-              TextField(
-                controller: otpController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Enter OTP',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Order Marked as Delivered')),
-                );
-                Navigator.of(context).pop();
-              },
-              child: Text('Confirm'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: buildDrawer(context:context),
-
+      drawer: buildDrawer(context: context),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: TextField(
-          onChanged: (value) {
-            setState(() {
-              searchQuery = value;
-            });
-          },
           decoration: InputDecoration(
-            hintText: 'Search...',
-            border: OutlineInputBorder(),
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.mic),
+            hintText: 'Search Delivery',
+            prefixIcon: const Icon(Icons.search, color: Colors.grey),
+            suffixIcon: const Icon(Icons.mic, color: Colors.grey),
+            filled: true,
+            fillColor: Colors.teal[50],
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide.none,
+            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: Icon(Icons.refresh, color: Colors.teal),
             onPressed: refreshData, // Refresh data on button press
           ),
-
         ],
       ),
       body: FutureBuilder<List<dynamic>>(
@@ -223,13 +163,14 @@ class _DeliveryPageState extends State<DeliveryPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 200,
+                  height: 300,
                   child: GoogleMap(
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(double.parse(filteredList[0]['lat']),double.parse(filteredList[0]['lng'])), // Default location
+                      target: LatLng(double.parse(filteredList[0]['lat']), double.parse(filteredList[0]['lng'])),
                       zoom: 10,
                     ),
                     markers: markers,
+                    polylines: routePolyline != null ? {routePolyline!} : {},
                     onMapCreated: (controller) {
                       mapController = controller;
                     },
@@ -264,16 +205,15 @@ class _DeliveryPageState extends State<DeliveryPage> {
                           children: [
                             IconButton(
                               icon: Icon(Icons.close, color: Colors.red),
-                              onPressed: () => _showCancelDialog(delivery),
+                              onPressed: () => {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.done_all, color: Colors.green),
-                              onPressed: () => _showDeliveryDialog(delivery),
+                              icon: Icon(Icons.done, color: Colors.teal),
+                              onPressed: () => {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.phone, color: Colors.blue),
-                              onPressed: () =>
-                                  _callPhoneNumber(delivery['phone']),
+                              icon: Icon(Icons.phone, color: Colors.teal),
+                              onPressed: () => _callPhoneNumber(delivery['phone']),
                             ),
                           ],
                         ),
@@ -297,4 +237,5 @@ class _DeliveryPageState extends State<DeliveryPage> {
       ),
     );
   }
+
 }

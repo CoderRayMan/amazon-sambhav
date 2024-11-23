@@ -57,13 +57,15 @@ class _ReviewQuestionsScreenState extends State<ReviewQuestionsScreen> {
 
     // Default screen for other questions
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         title: Text('Review for Parking #${_currentQuestion + 1}'),
 
       ),
       floatingActionButton: TextButton(
         onPressed: () => Navigator.of(context).pop(),
-        child: const Text('Save & Exit'),
+        child: const Text('Save & Exit',style: TextStyle(color: Colors.teal),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -72,6 +74,8 @@ class _ReviewQuestionsScreenState extends State<ReviewQuestionsScreen> {
           children: [
             LinearProgressIndicator(
               value: (_currentQuestion + 1) / _questions.length,
+              backgroundColor: Colors.grey,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal!),
             ),
             const SizedBox(height: 16),
             Text(
@@ -90,13 +94,14 @@ class _ReviewQuestionsScreenState extends State<ReviewQuestionsScreen> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: Colors.teal[50], // Text color
+                    ),
                     onPressed: () {
                       _questions[_currentQuestion]['answer'] = option;
                       _nextQuestion();
                     },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(16),
-                    ),
+
                     child: Text(option),
                   ),
                 ),
@@ -117,7 +122,9 @@ class ParkingReviewScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         title: const Text('Review for Parking #1'),
         leading: IconButton(
           icon: const Icon(Icons.close),
@@ -129,7 +136,8 @@ class ParkingReviewScreen2 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const LinearProgressIndicator(value: 0.33),
+             LinearProgressIndicator(value: 0.33,backgroundColor: Colors.grey,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal!),),
             const SizedBox(height: 20),
             const Text('Question 1/4', style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 20),
@@ -164,6 +172,9 @@ class ParkingReviewScreen2 extends StatelessWidget {
           child: const Text('P', style: TextStyle(color: Colors.white)),
         ),
         ElevatedButton(
+          // style: ElevatedButton.styleFrom(
+          //   foregroundColor: Colors.black, backgroundColor: Colors.teal[50], // Text color
+          // ),
           onPressed: () => onOptionSelected(text),
           child: Text(text),
         ),
@@ -178,7 +189,9 @@ class ParkingTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         title: const Text('Rate to Earn Rewards!!'),
       ),
       body: ListView.builder(

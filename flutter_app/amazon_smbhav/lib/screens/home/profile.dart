@@ -7,7 +7,9 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         centerTitle: false,
         title:              const Text('Profile', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
 
@@ -35,7 +37,14 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/delivery_person.jpg'), // Replace with the actual image
+                child: Container(
+                  decoration:
+                  BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.teal[50],
+
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -50,7 +59,7 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
               child: Text(
                 'Delivery Person',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey,
+                  color: Colors.grey[700],
                 ),
               ),
             ),
@@ -63,7 +72,7 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: const [
-                Icon(Icons.phone, color: Colors.green),
+                Icon(Icons.phone, color: Colors.teal),
                 SizedBox(width: 8),
                 Text('123-456-7890'), // Replace with actual phone number
               ],
@@ -71,7 +80,7 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: const [
-                Icon(Icons.email, color: Colors.green),
+                Icon(Icons.email, color: Colors.teal),
                 SizedBox(width: 8),
                 Text('barry@example.com'), // Replace with actual email
               ],
@@ -86,7 +95,7 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const Icon(Icons.delivery_dining, color: Colors.green),
+                const Icon(Icons.delivery_dining, color: Colors.teal),
                 const SizedBox(width: 8),
                 Text(
                   'Completed Deliveries: 50',
@@ -97,7 +106,7 @@ class DeliveryPersonProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const Icon(Icons.timer, color: Colors.green),
+                const Icon(Icons.timer, color: Colors.teal),
                 const SizedBox(width: 8),
                 Text(
                   'Average Time per Delivery: 30 mins',

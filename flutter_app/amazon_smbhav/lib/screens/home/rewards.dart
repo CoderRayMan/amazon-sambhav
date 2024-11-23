@@ -9,26 +9,21 @@ class RewardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: buildDrawer(context:context),
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.teal[100],
         elevation: 0.5,
         title: const Text(
-          'Barry Rewards',
+          'Rewards',
           style: TextStyle(
             color: Colors.black,
             fontSize: 22,
             fontWeight: FontWeight.w600,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            color: Colors.blue[800],
-            onPressed: () {},
-          ),
-        ],
+
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -74,10 +69,11 @@ class _UserInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.blue[50],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 2,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blue[50],
+          borderRadius: BorderRadius.circular(10)
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -110,9 +106,13 @@ class _RewardBalanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 4,
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        color: Colors.grey[100]
+
+      ),
+
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -121,7 +121,7 @@ class _RewardBalanceCard extends StatelessWidget {
               'Reward Balance Points',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 8),
@@ -130,22 +130,22 @@ class _RewardBalanceCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue[900],
+                color: Colors.teal[900],
               ),
             ),
             const SizedBox(height: 8),
             const Text(
               'Last Credit: April 8th, 2024',
               style: TextStyle(
-                color: Colors.grey,
+                color: Colors.black,
                 fontSize: 14,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[700],
+                backgroundColor: Colors.teal[700],
                 minimumSize: const Size(double.infinity, 48),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -156,7 +156,6 @@ class _RewardBalanceCard extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            const SizedBox(height: 16),
             TextButton(
               onPressed: () {
                 Navigator.push(
@@ -168,7 +167,7 @@ class _RewardBalanceCard extends StatelessWidget {
               },
               child: const Text(
                 'View Transaction History',
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colors.teal),
               ),
             ),
           ],
@@ -183,48 +182,50 @@ class _ChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 4,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.teal[50],
+          borderRadius: BorderRadius.circular(10)
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+             Text(
               'December Huddle!!',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blueGrey,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 4),
-            const Text(
+             Text(
               'Collect 1000pts by Dec 31st!!!',
               style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
+                fontSize: 12,
+                color: Colors.grey[600],
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
+             Text(
               'Challenge Start Date: Dec 8th, 2024',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.grey,
+                color: Colors.grey[600],
               ),
             ),
             const SizedBox(height: 8),
             LinearProgressIndicator(
               value: 430 / 1000,
-              backgroundColor: Colors.grey[200],
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue[700]!),
+              backgroundColor: Colors.white,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal!),
             ),
             const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children:  [
                 Text(
                   '430 of 1000',
                   style: TextStyle(
@@ -233,10 +234,10 @@ class _ChallengeCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Resets Jun 30, 2024',
+                  'Resets Jun 30, 2025',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey,
+                    color: Colors.grey[600],
                   ),
                 ),
               ],
@@ -253,12 +254,14 @@ class _ReviewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 2,
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        color: Colors.grey[100]
+      ),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: Colors.red[50],
+          backgroundColor: Colors.red[100],
           child: const Text(
             '2',
             style: TextStyle(
@@ -290,9 +293,11 @@ class _FindParkingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 2,
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.grey[100]
+      ),
       child: ListTile(
         leading: const Icon(
           Icons.local_parking,

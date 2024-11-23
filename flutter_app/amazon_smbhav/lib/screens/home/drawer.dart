@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/main.dart';
-import 'package:untitled/screens/home/home_page.dart';
 import 'package:untitled/screens/home/homepage.dart';
 import 'package:untitled/screens/home/parkings_near_me.dart';
 import 'package:untitled/screens/home/pastloads_page.dart';
@@ -8,6 +7,7 @@ import 'package:untitled/screens/home/profile.dart';
 import 'package:untitled/screens/home/rewards.dart';
 
 import '../../dummy_data.dart';
+
 class buildDrawer extends StatefulWidget {
   final BuildContext context;
   const buildDrawer({super.key, required this.context});
@@ -15,110 +15,192 @@ class buildDrawer extends StatefulWidget {
   @override
   State<buildDrawer> createState() => _buildDrawerState();
 }
+int _selectedIndex = 0;
 
 class _buildDrawerState extends State<buildDrawer> {
+  // Track the selected item
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue[100]),
-            child: Row(
-              children: [
+      child: Container(
+        color: Colors.teal[50],
 
-                const SizedBox(width: 16),
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Drawer Header
+            DrawerHeader(child:             Row(
+              children: [
+                Icon(
+                  Icons.eco,
+                  color: Colors.green,
+                ),
+                const SizedBox(width: 8),
                 const Text(
-                  'Vaanik'
-                  ,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  'Vàanik',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                 Text(
+                  ' Movers',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey[600],
+                  ),
                 ),
               ],
             ),
-          ),
-          // UserAccountsDrawerHeader(
-          //   decoration: BoxDecoration(color: Colors.blue),
-          //   accountName: Text('VAANIK'),
-          //   accountEmail: Text('delivery@domain.com'),
-          //   // currentAccountPicture: Image(image: AssetImage('assets/img.png'),height: 500,width: 500,)
-          // ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-            onTap: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => DeliveryPage()),
-                    (Route<dynamic> route) => false,
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.history),
-            title: Text('Past Loads'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PastLoadsPage(addresses: pastaddresses), // Add your actual data here
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.car_crash_sharp),
-            title: Text('Parking'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ParkingListScreen(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.card_giftcard),
-            title: Text('Rewards'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => RewardsPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Profile'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>DeliveryPersonProfileScreen(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              void clearCache() {
+            ),
+            const SizedBox(height: 32),
+
+            // Home Item
+            _buildDrawerItem(
+              context,
+              Icons.home,
+              'Home',
+              0, // index 0 for Home
+                  () {
                 setState(() {
-                  cachedData = null;
+                  _selectedIndex = 0;
                 });
-              }
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => InitialPage()),
-                    (Route<dynamic> route) => false,
-              );
-            },
-          ),
-        ],
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => DeliveryPage()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+            // Past Loads Item
+            _buildDrawerItem(
+              context,
+              Icons.history,
+              'Past Loads',
+              1, // index 1 for Past Loads
+                  () {
+                setState(() {
+                  _selectedIndex = 1;
+                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PastLoadsPage(addresses: pastaddresses),
+                  ),
+                );
+              },
+            ),
+            // Parking Item
+            _buildDrawerItem(
+              context,
+              Icons.car_crash_sharp,
+              'Parking',
+              2, // index 2 for Parking
+                  () {
+                setState(() {
+                  _selectedIndex = 2;
+                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ParkingListScreen(),
+                  ),
+                );
+              },
+            ),
+            // Rewards Item
+            _buildDrawerItem(
+              context,
+              Icons.card_giftcard,
+              'Rewards',
+              3, // index 3 for Rewards
+                  () {
+                setState(() {
+                  _selectedIndex = 3;
+                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RewardsPage(),
+                  ),
+                );
+              },
+            ),
+            // Profile Item
+            _buildDrawerItem(
+              context,
+              Icons.person,
+              'Profile',
+              4, // index 4 for Profile
+                  () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DeliveryPersonProfileScreen(),
+                  ),
+                );
+              },
+            ),
+            // Logout Item
+            _buildDrawerItem(
+              context,
+              Icons.logout,
+              'Logout',
+              5, // index 5 for Logout
+                  () {
+                void clearCache() {
+                  setState(() {
+                    cachedData = null;
+                  });
+                }
+                _selectedIndex=0;
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => InitialPage()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerItem(BuildContext context, IconData icon, String title, int index, VoidCallback onTap) {
+    bool isSelected = _selectedIndex == index;
+
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? Colors.black : Colors.grey[600],
+              size: 20,
+            ),
+            const SizedBox(width: 12),
+            Text(
+              title,
+              style: TextStyle(
+                color: isSelected ? Colors.black : Colors.grey[600],
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

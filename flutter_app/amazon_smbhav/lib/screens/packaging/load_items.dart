@@ -10,16 +10,11 @@ class LoadItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Load Items'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              // Add notification action
-            },
-          ),
-        ],
+        backgroundColor: Colors.teal[100],
+
       ),
       body: Column(
         children: [
@@ -29,7 +24,7 @@ class LoadItemsScreen extends StatelessWidget {
               children: [
                 _StatusCard(
                   label: 'Task Id',
-                  value: '#123abc',
+                  value: '#1bc',
                   backgroundColor: Colors.white,
                   valueStyle: const TextStyle(
                     fontSize: 24,
@@ -159,14 +154,14 @@ class LoadItemsScreen extends StatelessWidget {
                         ),
                       );                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                      backgroundColor: Colors.teal[100],
                       foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 48),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text('View 2D'),
+                    child: const Text('View 2D',style: TextStyle(color: Colors.black),),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -180,14 +175,14 @@ class LoadItemsScreen extends StatelessWidget {
                         ),
                       );                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                      backgroundColor: Colors.teal[100],
                       foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 48),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text('View 3D'),
+                    child: const Text('View 3D',style: TextStyle(color: Colors.black),),
                   ),
                 ),
               ],
@@ -228,7 +223,7 @@ class _StatusCard extends StatelessWidget {
               label,
               style: const TextStyle(
                 color: Colors.grey,
-                fontSize: 14,
+                fontSize: 12,
               ),
             ),
             const SizedBox(height: 4),

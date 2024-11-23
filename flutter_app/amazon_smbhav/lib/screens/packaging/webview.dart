@@ -83,23 +83,25 @@ class _WebViewPageState extends State<WebViewPage> {
         ),
       );
     return Scaffold(
-      appBar: AppBar(title: Text("3d View of Truck",)),
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: Text("3d View of Truck",),backgroundColor: Colors.teal[100],),
       body: Column(
         children: [
           SizedBox(height: 100,),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              "Truck Details:\nDelivery Truck\nModel: 739eaf2a0e5f4fcb93cc84fc4858350f\nDimensions: 12ft x 25ft",
+              "Truck : TN 1 1356\nModel: 739eaf2a0e5f4fcb93cc84fc4858350f\nDimensions: 12ft x 25ft",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ),
           ),
           Container(
+            color: Colors.teal[50],
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height - 500,
             child: WebViewWidget(controller: controller),

@@ -52,8 +52,8 @@ class TransactionItem extends StatelessWidget {
                 ),
                 Text(
                   time,
-                  style: const TextStyle(
-                    color: Colors.grey,
+                  style:  TextStyle(
+                    color: Colors.grey[700],
                     fontSize: 12,
                   ),
                 ),
@@ -61,7 +61,7 @@ class TransactionItem extends StatelessWidget {
             ),
           ),
           Text(
-            '\$${amount.toStringAsFixed(2)}',
+            'Rs.${amount.toStringAsFixed(2)}',
             style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
@@ -78,23 +78,25 @@ class TransferMoneyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Transfer Money From Rewards'),
+        title: const Text('Transfer Money From Rewards',style: TextStyle(fontSize: 18),),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+             Text(
               'Balance',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey,
+                color: Colors.grey[700],
               ),
             ),
             const SizedBox(height: 8),
@@ -109,7 +111,7 @@ class TransferMoneyScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.teal,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 32,
@@ -180,8 +182,10 @@ class _CardInfo extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            color: Colors.grey,
+          style:
+
+          TextStyle(
+            color: Colors.grey[700],
             fontSize: 14,
           ),
         ),

@@ -27,20 +27,23 @@ class PackagePlacementPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('2D Package Placement'),
+        backgroundColor: Colors.teal[100],
+
       ),
       body: SingleChildScrollView( // To make the page scrollable
         child: Column(
           children: [
+            SizedBox(height: 20,),
             Text(
               'Truck and Package Details',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.teal),
             ),
             SizedBox(height: 10),
-            Text('Truck Dimensions: $truckLength x $truckWidth x $truckHeight'),
-            Text('Package Dimensions: $packageLength x $packageWidth x $packageHeight'),
-            Text('Package Placement Position: ($fromleftside, $fromhead, $frombottom)'),
+            Text('Truck Dimensions: 12ft x 25ftx '),
+
             SizedBox(height: 20),
 
             // Top View Section (Adjusted to realistic proportion)

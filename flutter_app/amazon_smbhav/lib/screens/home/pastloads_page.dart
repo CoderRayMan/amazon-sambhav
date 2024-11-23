@@ -117,11 +117,13 @@ class _PastLoadsPageState extends State<PastLoadsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.teal[100],
         title:Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Deliveries', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text('Deliveries', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Container(
               width: 150,
               padding: const EdgeInsets.all(8),
@@ -176,25 +178,29 @@ class _PastLoadsPageState extends State<PastLoadsPage> {
                 return
 
                    ListTile(
-                    title: Text(address['name']),
+                    title:address['delivered']? Text(address['name']+ ' • Completed',style: TextStyle(                          fontWeight: FontWeight.bold
+,                      color: address['cancelled'] ? Colors.red : Colors.green,
+                    ),):Text(address['name']+ ' • Failed',style: TextStyle(                              color: address['cancelled'] ? Colors.red : Colors.green,
+                      fontWeight: FontWeight.bold
+                ),),
                     subtitle: Text('${address['deliveryTime']} • 5 days'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                              color: address['cancelled'] ? Colors.red : Colors.green,
-
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text( address['abort'] ??
-                              address['delivered']
-                                            ? 'Completed'
-                                            : 'Failed',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
+                        // Container(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        //   decoration: BoxDecoration(
+                        //       color: address['cancelled'] ? Colors.red : Colors.green,
+                        //
+                        //     borderRadius: BorderRadius.circular(12),
+                        //   ),
+                        //   child: Text( address['abort'] ??
+                        //       address['delivered']
+                        //                     ? 'Completed'
+                        //                     : 'Failed',
+                        //     style: const TextStyle(color: Colors.white),
+                        //   ),
+                        // ),
                         const SizedBox(width: 8),
                         Text(address['reward'].toString()),
                         const Icon(Icons.more_vert),

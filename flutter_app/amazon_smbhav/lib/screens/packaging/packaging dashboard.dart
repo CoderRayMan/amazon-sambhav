@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/main.dart';
+import 'package:untitled/screens/packaging/drawers.dart';
 import 'package:untitled/screens/packaging/load_items.dart';
 // import 'package:flutter/material.dart';
 // import 'package:untitled/main.dart';
@@ -203,16 +204,16 @@ class StatusFilter extends StatelessWidget {
       onSelected: (bool selected) {
         onFilterChanged(label);
       },
-      backgroundColor: isSelected ? Colors.blue.withOpacity(0.1) : Colors.grey[200],
-      selectedColor: Colors.blue.withOpacity(0.2),
+      backgroundColor: isSelected ? Colors.teal.withOpacity(0.1) : Colors.grey[200],
+      selectedColor: Colors.teal.withOpacity(0.2),
       labelStyle: TextStyle(
-        color: isSelected ? Colors.blue : Colors.black87,
+        color: isSelected ? Colors.teal : Colors.black87,
         fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
         side: BorderSide(
-          color: isSelected ? Colors.blue : Colors.transparent,
+          color: isSelected ? Colors.teal : Colors.transparent,
         ),
       ),
     );
@@ -238,7 +239,7 @@ class SearchBar extends StatelessWidget {
           hintText: 'Search all tasks...',
           prefixIcon: const Icon(Icons.search, color: Colors.grey),
           filled: true,
-          fillColor: Colors.grey[100],
+          fillColor: Colors.teal[50],
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
@@ -373,43 +374,14 @@ class _PackagingDashboardState extends State<PackagingDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue[100]),
-              child: Row(
-                children: [
-
-                  const SizedBox(width: 16),
-                  const Text(
-                    'Vaanik'
-                        ,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            _buildDrawerItem(Icons.dashboard, 'Package Dashboard', onTap: () {}),
-            _buildDrawerItem(Icons.card_giftcard, 'Rewards', onTap: () {}),
-            _buildDrawerItem(Icons.person, 'Profile', onTap: () {}),
-            _buildDrawerItem(Icons.logout, 'Logout', onTap: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) =>  InitialPage()),
-                    (Route<dynamic> route) => false,
-              );
-            }),
-          ],
-        ),
-      ),
+      backgroundColor: Colors.white,
+      drawer: buildDrawer(context: context),
       appBar: AppBar(
         title: const Text(
           'Packaging Dashboard',
           style: TextStyle(color: Colors.black87),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.teal[100],
         elevation: 0.5,
         leading: Builder(
           builder: (context) => IconButton(
@@ -473,10 +445,14 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 2,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+        color: Colors.grey[100]
+      ),
       child: ListTile(
         title: Text(task.name, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Column(
