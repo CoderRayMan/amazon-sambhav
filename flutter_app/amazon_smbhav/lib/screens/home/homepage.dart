@@ -13,11 +13,19 @@ class DeliveryPage extends StatefulWidget {
 }
 
 class _DeliveryPageState extends State<DeliveryPage> {
+  final List<String> etaList = [
+    "1.5 hrs",
+    "2 hrs",
+    "45 mins",
+    "30 mins",
+    "1 hr",
+    "3 hrs"
+  ];
+
   late Future<List<dynamic>> deliveryData;
   String filterValue = 'All';
   String searchQuery = '';
   GoogleMapController? mapController;
-  Polyline? routePolyline;
 
   @override
   void initState() {
@@ -44,6 +52,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
     // Return cached data if no refresh is needed
     return cachedData!;
   }
+  String selectedFilter = 'All';
 
   Future<void> fetchMarkers() async {
     if (cachedData == null) return;
@@ -53,6 +62,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
 
     for (int i = 0; i < cachedData!.length; i++) {
       var delivery = cachedData![i];
+
       final latitude = delivery['lat'];
       final longitude = delivery['lng'];
 
@@ -61,8 +71,8 @@ class _DeliveryPageState extends State<DeliveryPage> {
           markerId: MarkerId(delivery['load_id'].toString()),
           position: LatLng(double.parse(latitude), double.parse(longitude)),
           infoWindow: InfoWindow(
-            title: 'Delivery: $i\n${delivery['address']}',
-            snippet: 'Del.No.: ${delivery['sequence']}',
+            title: 'Delivery: $i\n${delivery['sequence']}',
+            snippet: '${delivery['address']}',
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
         ),
@@ -127,6 +137,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
       drawer: buildDrawer(context: context),
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: TextField(
           decoration: InputDecoration(
             hintText: 'Search Delivery',
@@ -176,30 +187,42 @@ class _DeliveryPageState extends State<DeliveryPage> {
                     },
                   ),
                 ),
-                DropdownButton<String>(
-                  value: filterValue,
-                  icon: Icon(Icons.filter_list),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      filterValue = newValue!;
-                    });
-                  },
-                  items: <String>['All', 'Delivered', 'Cancelled', 'To Deliver']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: StatusFilter(
+                    selectedFilter: selectedFilter,
+                    onFilterChanged: (filter) {
+                      setState(() {
+                        selectedFilter = filter;
+                      });
+                    },
+                  ),
+                ),                // DropdownButton<String>(
+                //   value: filterValue,
+                //   icon: Icon(Icons.filter_list),
+                //   onChanged: (String? newValue) {
+                //     setState(() {
+                //       filterValue = newValue!;
+                //     });
+                //   },
+                //   items: <String>['All', 'Delivered', 'Cancelled', 'To Deliver']
+                //       .map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                // ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: filteredList.length,
                     itemBuilder: (context, index) {
                       final delivery = filteredList[index];
+                      String eta = etaList[index % etaList.length];
+
                       return ListTile(
                         title: Text('Delivery ${delivery['sequence']}'),
-                        subtitle: Text(delivery['address']),
+                        subtitle: Text("${delivery['address']}  •  ${eta}"),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -239,3 +262,57 @@ class _DeliveryPageState extends State<DeliveryPage> {
   }
 
 }
+
+class StatusFilter extends StatelessWidget {
+  final String selectedFilter;
+  final Function(String) onFilterChanged;
+
+  const StatusFilter({
+    super.key,
+    required this.selectedFilter,
+    required this.onFilterChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          _buildFilterChip('All'),
+          const SizedBox(width: 8),
+          _buildFilterChip('Delivered'),
+          const SizedBox(width: 8),
+          _buildFilterChip('Cancelled'),
+          const SizedBox(width: 8),
+          _buildFilterChip('To Deliver'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFilterChip(String label) {
+    final isSelected = selectedFilter == label;
+    return FilterChip(
+      label: Text(label),
+      selected: isSelected,
+      onSelected: (bool selected) {
+        onFilterChanged(label);
+      },
+      backgroundColor: isSelected ? Colors.teal.withOpacity(0.1) : Colors.grey[200],
+      selectedColor: Colors.teal.withOpacity(0.2),
+      labelStyle: TextStyle(
+        color: isSelected ? Colors.teal : Colors.black87,
+        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(
+          color: isSelected ? Colors.teal : Colors.transparent,
+        ),
+      ),
+    );
+  }
+}
+

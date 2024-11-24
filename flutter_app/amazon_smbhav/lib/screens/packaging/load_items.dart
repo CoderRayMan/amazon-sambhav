@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:untitled/screens/home/parking_review_questions.dart';
 import 'package:untitled/screens/packaging/loading.dart';
 import 'package:untitled/screens/packaging/webview.dart';
 
@@ -14,7 +13,6 @@ class LoadItemsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Load Items'),
         backgroundColor: Colors.teal[100],
-
       ),
       body: Column(
         children: [
@@ -34,19 +32,19 @@ class LoadItemsScreen extends StatelessWidget {
                 const SizedBox(width: 8),
                 _StatusCard(
                   label: 'Total Items',
-                  value: '2208',
+                  value: '34',
                   backgroundColor: Colors.grey.shade200,
                 ),
                 const SizedBox(width: 8),
                 _StatusCard(
                   label: 'Completed',
-                  value: '1008',
+                  value: '25',
                   backgroundColor: Colors.cyan.shade50,
                 ),
                 const SizedBox(width: 8),
                 _StatusCard(
                   label: 'Pending',
-                  value: '1200',
+                  value: '9',
                   backgroundColor: Colors.amber.shade100,
                 ),
               ],
@@ -74,7 +72,6 @@ class LoadItemsScreen extends StatelessWidget {
               viewportFraction: 0.8,
             ),
             items: [
-              'assets/truck_back.png',
               'assets/truck_side.png',
               'assets/truck_front.png', // Add any other images here
             ].map((imagePath) {
@@ -94,54 +91,150 @@ class LoadItemsScreen extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Row(
+              child: Column(
                 children: [
-                  Expanded(
-                    child: Column(
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text('Confirm & Proceed'),
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 4,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.teal,
-                            foregroundColor: Colors.white,
-                            minimumSize: const Size(double.infinity, 48),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Box #1',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          child: const Text('Confirm & Proceed'),
+                            Text('Length: 12 ft'),
+                            Text('Width: 8 ft'),
+                            Text('Height: 5 ft'),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Weight: 150 kg',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: const Text('View'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 4,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            foregroundColor: Colors.white,
-                            minimumSize: const Size(double.infinity, 48),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Box #2',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          child: const Text('Not Present'),
+                            Text('Length: 3 ft'),
+                            Text('Width: 2 ft'),
+                            Text('Height: 1 ft'),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Weight: 15 kg',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: const Text('View'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
+
                 ],
               ),
             ),
           ),
-          // Bottom buttons for 2D and 3D view
-          Padding(
-            padding: const EdgeInsets.all(16),
+          // Bottom buttons for 2D and 3D view with white background container
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton:           Padding(
+        padding: const EdgeInsets.all(16),
+        child: Container(
+          width: double.infinity,
+          height: 100,
+          color: Colors.white, // White background for the container
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Expanded(
@@ -150,9 +243,20 @@ class LoadItemsScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  PackagePlacementPage(truckLength: 400, truckWidth: 200, truckHeight: 200, packageLength: 40, packageWidth: 40, packageHeight: 40, fromleftside: 50, fromhead: 100, frombottom: 100),
+                          builder: (context) => PackagePlacementPage(
+                            truckLength: 400,
+                            truckWidth: 200,
+                            truckHeight: 200,
+                            packageLength: 40,
+                            packageWidth: 40,
+                            packageHeight: 40,
+                            fromleftside: 50,
+                            fromhead: 100,
+                            frombottom: 100,
+                          ),
                         ),
-                      );                    },
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal[100],
                       foregroundColor: Colors.white,
@@ -161,7 +265,10 @@ class LoadItemsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text('View 2D',style: TextStyle(color: Colors.black),),
+                    child: const Text(
+                      'View 2D',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -171,9 +278,10 @@ class LoadItemsScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  WebViewPage(),
+                          builder: (context) => WebViewPage(),
                         ),
-                      );                    },
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal[100],
                       foregroundColor: Colors.white,
@@ -182,14 +290,18 @@ class LoadItemsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text('View 3D',style: TextStyle(color: Colors.black),),
+                    child: const Text(
+                      'View 3D',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
+
     );
   }
 }
@@ -217,7 +329,7 @@ class _StatusCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               label,
@@ -225,14 +337,16 @@ class _StatusCard extends StatelessWidget {
                 color: Colors.grey,
                 fontSize: 12,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 4),
             Text(
               value,
-              style: valueStyle ?? const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: valueStyle ??
+                  const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

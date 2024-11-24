@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/main.dart';
 import 'package:untitled/screens/manager/assignments.dart';
 import 'package:untitled/screens/manager/dashboard.dart';
+import 'package:untitled/screens/manager/insights.dart';
 
 class SidebarMenu extends StatefulWidget {
   const SidebarMenu({super.key});
@@ -100,8 +101,14 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 (Route<dynamic> route) => false,
           );
         _selectedIndex=0;
+        }else if (title == "Insights") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => InsightsPage()),
+          );
+
         }else
-          {
+        {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => destination),
